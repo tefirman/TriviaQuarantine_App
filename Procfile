@@ -1,1 +1,1 @@
-web: gunicorn TriviaWidget:server
+web: gunicorn TriviaWidget:app.server

@@ -13,5 +13,5 @@ gunicorn==19.9.0
 numpy==1.17.0
 pandas==0.20.3
 plotly==4.1.0
-googleapiclient
+google-api-python-client==1.6.2
 google_auth_oauthlib==0.4.1

@@ -1,0 +1,15 @@
+app==0.0.1
+appdirs==1.4.3
+appnope==0.1.0
+dash==1.1.1
+dash-core-components==1.1.1
+dash-html-components==1.0.0
+dash-renderer==1.0.0
+dash-table==4.1.0
+Flask==1.1.1
+Flask-Compress==1.4.0
+Flask-Cors==2.1.2
+gunicorn==19.9.0
+numpy==1.17.0
+pandas==0.20.3
+plotly==4.1.0

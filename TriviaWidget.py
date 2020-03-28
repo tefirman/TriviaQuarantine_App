@@ -48,15 +48,13 @@ def put_values(rangeVals,values):
     service.spreadsheets().values().update(spreadsheetId=SPREADSHEET_ID,\
     range=rangeVals,valueInputOption='USER_ENTERED',body=body).execute()
 
-questions = get_values('Questions!A1:C1000')
-settings = get_values('Overview!A1:B1000')
-question_ind = settings.loc[settings.Setting == 'Question Number','Value'].values[0]
-current_question = questions.loc[questions.Number == question_ind]
+questions = get_values('Questions!A1:D1000')
+current_question = questions.loc[questions.Active == 'TRUE']
 
 def add_response(team,question,answer,wager):
-    responses = get_values('Responses!A1:E1000')
-    put_values("Responses!A" + str(responses.shape[0] + 2) + ":E" + \
-    str(responses.shape[0] + 2),[[team,str(datetime.datetime.now()),question,answer,wager]])
+    responses = get_values('Responses!A1:F1000')
+    put_values("Responses!A" + str(responses.shape[0] + 2) + ":F" + \
+    str(responses.shape[0] + 2),[[team,str(datetime.datetime.now()),question,answer,wager,'Unscored']])
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
@@ -94,10 +92,8 @@ def update_output(n_clicks, team, answer, wager):
     [dash.dependencies.Input('question-button','n_clicks')])
 def update_question(n_clicks):
     global question_ind
-    questions = get_values('Questions!A1:C1000')
-    settings = get_values('Overview!A1:B1000')
-    question_ind = settings.loc[settings.Setting == 'Question Number','Value'].values[0]
-    current_question = questions.loc[questions.Number == question_ind]
+    questions = get_values('Questions!A1:D1000')
+    current_question = questions.loc[questions.Active == 'TRUE']
     return current_question['Question'].values[0]
 
 if __name__ == '__main__':

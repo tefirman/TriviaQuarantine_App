@@ -74,7 +74,7 @@ app.layout = html.Div([
     html.Button('Submit', id='submit-button'),
     html.Div(id='output-container-button',children="Let's get started!!!"),
     html.Div([dcc.Graph(id='standings-table',figure=fig)], \
-    style={'width': '50%', 'display': 'inline-block', 'padding': '0 20'}),
+    style={'width': '75%', 'display': 'inline-block', 'padding': '0 20'}),
     dcc.Interval(id='interval-component',interval=10*1000,n_intervals=0)
 ])
 

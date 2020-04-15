@@ -107,6 +107,7 @@ def update_question(n_intervals):
     .size().to_frame('Unscored').reset_index(),how='left',on='Team Name')
     standings.Score = standings.Score.fillna(0)
     standings.Unscored = standings.Unscored.fillna(0)
+    standings = standings.sort_values(by='Score',ascending=False).reset_index(drop=True)
     fig = go.Figure(data=[go.Table(columnwidth=[100,50,50],header=dict(values=list(standings.columns),\
     fill_color='paleturquoise',align='center'),cells=dict(values=[standings['Team Name'],\
     standings['Score'],standings['Unscored']],fill_color='lavender',align='center'))])

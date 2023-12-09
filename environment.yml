@@ -1,0 +1,21 @@
+name: trivia
+dependencies:
+  - python=3.10
+  - numpy
+  - pandas
+  - plotly
+  - dash
+  - dash-core-components
+  - dash-html-components
+  - google-auth-oauthlib
+  - wget
+  - pip
+  - pip:
+    - python-dotenv
+    - XlsxWriter
+    - google-api-python-client
+    - matplotlib
+    - beautifulsoup4
+    - Unidecode
+    - lxml
+    - scipy

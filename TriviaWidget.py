@@ -7,8 +7,8 @@ Created on Tue Mar 24 16:34:14 2020
 """
 
 import dash
-import dash_core_components as dcc
-import dash_html_components as html
+from dash import dcc
+from dash import html
 import pickle
 import os.path
 from googleapiclient.discovery import build
@@ -99,6 +99,7 @@ def update_question(n_intervals):
     global current_question
     questions = get_values('Questions!A1:D1000')
     responses = get_values('Responses!A1:F1000')
+    responses = responses.loc[responses.Wager.str.isnumeric()].reset_index(drop=True)
     responses.Wager = responses.Wager.astype(int)
     standings = pd.merge(left=pd.merge(left=pd.DataFrame({'Team Name':responses['Team Name'].unique()}),\
     right=responses.loc[responses.Scoring == 'Correct'].groupby('Team Name').Wager.sum()\
